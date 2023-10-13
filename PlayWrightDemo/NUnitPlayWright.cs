@@ -1,5 +1,7 @@
 using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
+using NUnit.Framework;
+using PlayWrightDemo.Pages;
 
 namespace PlayWrightDemo;
 
@@ -28,5 +30,19 @@ public class NUnitPlayWright : PageTest
         //await Page.ClickAsync("text=Log in");
 
         await Expect(Page.Locator("text='Employee Details'")).ToBeVisibleAsync();
+    }
+
+    [Test]
+    public async Task TestWithPOM()
+    {
+        await Page.GotoAsync("http://www.eaapp.somee.com");
+
+        var loginPage = new LoginPageUpgraded(Page);
+
+        await loginPage.ClickLogin();
+        await loginPage.Login("admin", "password");
+        var isExist = await loginPage.IsEmployeeDetailsExists();
+
+        Assert.IsTrue(isExist);
     }
 }
