@@ -45,4 +45,24 @@ public class NUnitPlayWright : PageTest
 
         Assert.IsTrue(isExist);
     }
+
+    [Test]
+    public async Task TestNetwork()
+    {
+        await Page.GotoAsync("http://www.eaapp.somee.com");
+
+        LoginPageUpgraded loginPage = new LoginPageUpgraded(Page);
+
+        await loginPage.ClickLogin();
+
+        // Same as below code
+        //var waitResponse = Page.WaitForResponseAsync("**/Employee");
+        //await loginPage.ClickEmployeeList();
+        //var getResponse = await waitResponse;
+
+        var repsonse = await Page.RunAndWaitForResponseAsync(async () =>
+        {
+            await loginPage.ClickEmployeeList();
+        }, x => x.Url.Contains("/Employee") && x.Status == 200);
+    }
 }
