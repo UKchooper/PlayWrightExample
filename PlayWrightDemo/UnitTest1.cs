@@ -32,7 +32,7 @@ public class Tests
         await page.FillAsync("#Password", "password");
         await page.ClickAsync("text=Log in");
         var isExist = await page.Locator("text='Employee Details'").IsVisibleAsync();
-        Assert.IsTrue(isExist);
+        Assert.That(isExist);
     }
 
     [Test]

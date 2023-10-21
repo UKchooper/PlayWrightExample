@@ -1,9 +1,4 @@
 ﻿using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpecFlowTestProject.Drivers
 {
@@ -18,7 +13,7 @@ namespace SpecFlowTestProject.Drivers
 
         private async Task<IPage> InitalizePlayWright()
         {
-            using var playWright = await Playwright.CreateAsync();
+            var playWright = await Playwright.CreateAsync();
 
             _browser = await playWright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {

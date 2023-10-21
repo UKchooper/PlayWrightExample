@@ -1,31 +1,46 @@
+using NUnit.Framework;
+using PlayWrightDemo.Pages;
+using SpecFlowTestProject.Drivers;
+using TechTalk.SpecFlow.Assist;
+
 namespace SpecFlowTestProject.StepDefinitions
 {
     [Binding]
     public sealed class EAAppTestSteps
     {
+        private readonly Driver _driver;
+        private readonly LoginPageUpgraded _loginPage;
+
+        public EAAppTestSteps(Driver driver)
+        {
+            _driver = driver;
+            _loginPage = new LoginPageUpgraded(_driver.Page);
+        }
         [Given(@"I navigate to application")]
         public void GivenINavigateToApplication()
         {
-            throw new PendingStepException();
+            _driver.Page.GotoAsync("http://www.eaapp.somee.com");
+            //_driver.Page.GotoAsync("http://www.google.com");
         }
 
         [Given(@"I click login link")]
-        public void GivenIClickLoginLink()
+        public async Task GivenIClickLoginLink()
         {
-            throw new PendingStepException();
+            await _loginPage.ClickLogin();
         }
 
         [Given(@"I enter following login details")]
-        public void GivenIEnterFollowingLoginDetails(Table table)
+        public async Task GivenIEnterFollowingLoginDetails(Table table)
         {
-            throw new PendingStepException();
+            dynamic data = table.CreateDynamicInstance();
+            await _loginPage.Login((string)data.UserName, (string)data.Password);
         }
 
         [Then(@"I see Employee Lists")]
-        public void ThenISeeEmployeeLists()
+        public async Task ThenISeeEmployeeLists()
         {
-            throw new PendingStepException();
+            var isExist = await _loginPage.IsEmployeeDetailsExists();
+            isExist.Should().Be(false);
         }
-
     }
 }

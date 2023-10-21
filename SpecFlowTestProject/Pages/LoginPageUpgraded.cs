@@ -1,4 +1,6 @@
-﻿using Microsoft.Playwright;
+﻿using Common;
+using Microsoft.Playwright;
+
 
 namespace PlayWrightDemo.Pages
 {
@@ -8,12 +10,12 @@ namespace PlayWrightDemo.Pages
 
         public LoginPageUpgraded(IPage page) => _page = page;
 
-        private ILocator LnkLogin => _page.Locator("text=Login");
-        private ILocator TextUserName => _page.Locator("#UserName");
-        private ILocator TextPassword => _page.Locator("#Password");
-        private ILocator BtnLogin => _page.Locator("text=Log in");
-        private ILocator LnkEmployeeDetails => _page.Locator("text='Employee Details'");
-        private ILocator LnkEmployeeLists => _page.Locator("text='Employee List'");
+        private ILocator LnkLogin => _page.Locator(AutomationIds.LnkLoginView);
+        private ILocator TextUserName => _page.Locator(AutomationIds.TextUserNameView);
+        private ILocator TextPassword => _page.Locator(AutomationIds.TextPasswordView);
+        private ILocator BtnLogin => _page.Locator(AutomationIds.BtnLoginView);
+        private ILocator LnkEmployeeDetails => _page.Locator(AutomationIds.LnkEmployeeDetailsView);
+        private ILocator LnkEmployeeLists => _page.Locator(AutomationIds.LnkEmployeeDetailsView);
 
         public async Task ClickLogin()
         {
@@ -28,10 +30,7 @@ namespace PlayWrightDemo.Pages
             await BtnLogin.ClickAsync();
         }
 
-        public async Task ClickEmployeeList()
-        {
-            await LnkEmployeeLists.ClickAsync();
-        }
+        public async Task ClickEmployeeList() => await LnkEmployeeLists.ClickAsync();
 
         public async Task<bool> IsEmployeeDetailsExists() => await LnkEmployeeDetails.IsVisibleAsync();
     }

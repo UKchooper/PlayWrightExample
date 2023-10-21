@@ -37,7 +37,7 @@ public class NUnitPlayWright : PageTest
     {
         await Page.GotoAsync("http://www.eaapp.somee.com");
 
-        var loginPage = new LoginPageUpgraded(Page);
+        var loginPage = new LoginPageUpgradedOld(Page);
 
         await loginPage.ClickLogin();
         await loginPage.Login("admin", "password");
@@ -51,7 +51,7 @@ public class NUnitPlayWright : PageTest
     {
         await Page.GotoAsync("http://www.eaapp.somee.com");
 
-        LoginPageUpgraded loginPage = new LoginPageUpgraded(Page);
+        LoginPageUpgradedOld loginPage = new LoginPageUpgradedOld(Page);
 
         await loginPage.ClickLogin();
 

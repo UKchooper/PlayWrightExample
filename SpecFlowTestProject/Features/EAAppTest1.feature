@@ -1,7 +1,7 @@
-﻿Feature: EAEAppTest1
+﻿Feature: EAEAppTest
 
 @smoke
-Scenario: Test Login operation of EA Application1
+Scenario: Test Login operation of EA Application
 	Given I navigate to application
 	#And I click login link
 	#And I enter following login details
