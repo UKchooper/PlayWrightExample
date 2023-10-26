@@ -25,16 +25,6 @@ namespace SpecFlowTestProject.StepDefinitions
             _driver.Page.GotoAsync("https://www.saucedemo.com/");
         }
 
-        //[When(@"I enter the following details")]
-        //public async Task WhenIEnterTheFollowingDetails(Table table)
-        //{
-        //    // dynamic data table:
-        //    //dynamic data = table.CreateDynamicInstance();
-        //    //await _loginPage.ClickAndEnterPasswordDetails((string)data.UserName);
-        //    //await _loginPage.ClickAndEnterPasswordDetails((string)data.Password);
-        //    //await _loginPage.ClickLoginButton();
-        //}
-
         [When(@"I enter the login details '([^']*)' and '([^']*)'")]
         [Given(@"I enter the login details '([^']*)' and '([^']*)'")]
         public async Task WhenIEnterTheLoginDetailsAnd(string username, string password)

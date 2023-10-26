@@ -14,6 +14,10 @@ namespace SpecFlowTestProject.Pages
         private ILocator LogoutButton => _page.Locator(InventoryAutomationIds.LogoutButtonView);
         public ILocator VarProductItemButton => _page.GetByText(varProductName)
             .Locator("xpath=../../..").Locator("button");
+        public ILocator VarProductPriceText => _page.GetByText(varProductName)
+            .Locator("xpath=../..").Locator("xpath=//div[@class='inventory_item_price']");
+        //public ILocator VarProductItemButton => _page.GetByText(varProductName)
+        //    .Locator("xpath=../../..").GetByRole(AriaRole.Button, new() { Name = "Add to cart" });
         private ILocator CheckoutButton => _page.Locator("#shopping_cart_container a");
         
         /// <summary>
@@ -33,7 +37,18 @@ namespace SpecFlowTestProject.Pages
         /// </summary>
         /// <param name="productName"></param>
         /// <returns></returns>
-        public async Task ClickAddToProduct(string productName)
+        public async Task ClickAddToProductButton(string productName)
+        {
+            varProductName = productName;
+            await VarProductItemButton.ClickAsync();
+        }
+
+        /// <summary>
+        /// Click Remove product button using name e.g. "Sauce Labs Fleece Jacket"
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <returns></returns>
+        public async Task ClickRemoveProductButton(string productName)
         {
             varProductName = productName;
             await VarProductItemButton.ClickAsync();
@@ -44,5 +59,14 @@ namespace SpecFlowTestProject.Pages
         /// </summary>
         /// <returns></returns>
         public async Task ClickCheckoutButton() => await CheckoutButton.ClickAsync();
+
+        /// <summary>
+        /// Get variable product text name for locator e.g. "Sauce Labs Backpack"
+        /// </summary>
+        /// <param name="productName"></param>
+        public void GetVarProductNameForLocator(string productName)
+        {
+            varProductName = productName;
+        }
     }
 }

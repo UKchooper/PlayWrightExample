@@ -37,7 +37,8 @@ namespace PlayWrightSpecFlow.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Inventory tests", "A short summary of the feature", ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Inventory tests", "Inventory tests:\r\nThese include adding products to the cart, removing products fr" +
+                    "om the cart", ProgrammingLanguage.CSharp, new string[] {
                         "inventory"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -83,7 +84,7 @@ namespace PlayWrightSpecFlow.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Item can be added to cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -103,20 +104,112 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 8
  testRunner.Given("I navigate to website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 8
+#line 9
  testRunner.And("I enter the login details \'standard_user\' and \'secret_sauce\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 9
+#line 10
  testRunner.When("I click Add to cart button on main page for \'Sauce Labs Backpack\' item", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 10
+#line 11
  testRunner.Then("I navigate to checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 11
+#line 12
  testRunner.And("validate \'1\' \'Sauce Labs Backpack\' item is in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Item can be removed via Inventory page")]
+        public virtual void ItemCanBeRemovedViaInventoryPage()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Item can be removed via Inventory page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 15
+ testRunner.Given("I navigate to website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 16
+ testRunner.And("I enter the login details \'standard_user\' and \'secret_sauce\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 17
+ testRunner.When("I click Add to cart button on main page for \'Sauce Labs Fleece Jacket\' item", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 18
+ testRunner.Then("I click Remove button main page for \'Sauce Labs Fleece Jacket\' item", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Product title, descript, price are present and correct")]
+        public virtual void ProductTitleDescriptPriceArePresentAndCorrect()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Product title, descript, price are present and correct", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 20
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 21
+ testRunner.Given("I navigate to website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 22
+ testRunner.And("I enter the login details \'standard_user\' and \'secret_sauce\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Title",
+                            "Description",
+                            "Price"});
+                table1.AddRow(new string[] {
+                            "Sauce Labs Bolt T-Shirt",
+                            "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American App" +
+                                "arel, 100% ringspun combed cotton, heather gray with red bolt.",
+                            "$15.99"});
+#line 23
+ testRunner.Then("I validate product Title <Title>, Description <Description> and Price <Price>", ((string)(null)), table1, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

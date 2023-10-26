@@ -2,6 +2,7 @@
 using PlayWrightSpecFlow.Pages;
 using SpecFlowTestProject.Drivers;
 using SpecFlowTestProject.Pages;
+using TechTalk.SpecFlow.Assist;
 
 namespace SpecFlowTestProject.StepDefinitions
 {
@@ -24,9 +25,8 @@ namespace SpecFlowTestProject.StepDefinitions
         {
             var expectedButtonText = "Remove";
 
-            await _inventoryPage.ClickAddToProduct(productName);
+            await _inventoryPage.ClickAddToProductButton(productName);
             expectedButtonText.Should().Be(await _inventoryPage.VarProductItemButton.InnerTextAsync());
-            
         }
 
         [Then(@"I navigate to checkout")]
@@ -45,6 +45,29 @@ namespace SpecFlowTestProject.StepDefinitions
 
             productCount.Should().Be(await _cartPage.CheckoutCartNumber.CountAsync());
             productName.Should().Be(await _cartPage.VarProductItem.InnerTextAsync());
+        }
+
+        [Then(@"I click Remove button main page for '([^']*)' item")]
+        public async Task ThenIClickRemoveButtonMainPageForItem(string productName)
+        {
+            var expectedButtonText = "Add to cart";
+
+            await _inventoryPage.ClickRemoveProductButton(productName);
+            expectedButtonText.Should().Be(await _inventoryPage.VarProductItemButton.InnerTextAsync());
+        }
+
+        [Then(@"I validate product Title <Title>, Description <Description> and Price <Price>")]
+        public async Task ThenIValidateProductTitleTitleDescriptionDescriptionAndPricePrice(Table table)
+        {
+            dynamic data = table.CreateDynamicInstance();
+            var price = data.Price;
+            var productName = data.Title;
+
+            _inventoryPage.GetVarProductNameForLocator(productName);
+
+            var actual = await _inventoryPage.VarProductPriceText.InnerTextAsync();
+
+            actual.Should().Be(price);
         }
     }
 }
