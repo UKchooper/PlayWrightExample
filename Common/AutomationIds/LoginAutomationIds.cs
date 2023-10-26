@@ -3,32 +3,27 @@
     /// <summary>
     /// Class that contains Automation Identifiers for elements
     /// </summary>
-    public class AutomationIds
+    public class LoginAutomationIds
     {
-        /// <summary>
-        /// ID for login text
-        /// </summary>
-        public const string LnkLoginView = "text=Login";
-        
         /// <summary>
         /// ID for Username text
         /// </summary>
-        public const string TextUserNameView = "#UserName";
+        public const string TextUsernameView = "input#user-name";
 
         /// <summary>
         /// ID for Password text
         /// </summary>
-        public const string TextPasswordView = "#Password";
+        public const string TextPasswordView = "input#password";
 
         /// <summary>
         /// ID for button log in text
         /// </summary>
-        public const string BtnLoginView = "text=Log in";
+        public const string ButtonLoginView = "input#login-button";
 
         /// <summary>
-        /// ID for Employee Details text
+        /// ID for login error text
         /// </summary>
-        public const string LnkEmployeeDetailsView = "text='Employee Details'";
+        public const string TextLoginErrorView = "data-test=error";
 
         /// <summary>
         /// ID for Employee List text
