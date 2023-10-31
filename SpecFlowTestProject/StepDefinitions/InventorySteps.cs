@@ -1,5 +1,6 @@
 ﻿using Microsoft.Playwright.NUnit;
 using PlayWrightSpecFlow.Pages;
+using PlayWrightSpecFlow.TableRows;
 using SpecFlowTestProject.Drivers;
 using SpecFlowTestProject.Pages;
 using TechTalk.SpecFlow.Assist;
@@ -68,6 +69,35 @@ namespace SpecFlowTestProject.StepDefinitions
             var actual = await _inventoryPage.VarProductPriceText.InnerTextAsync();
 
             actual.Should().Be(price);
+        }
+
+        [When(@"I validate the order of products Title <Title>, Description <Description> and Price <Price>")]
+        [Then(@"I validate the order of products Title <Title>, Description <Description> and Price <Price>")]
+        public async Task ThenIValidateTheDefaultOrderOfProductsTitleTitleDescriptionDescriptionAndPricePrice(Table table)
+        {
+            List<ProductRow> product = new List<ProductRow>();
+            product.AddRange(table.CreateSet<ProductRow>());
+
+            // Get actual data
+            var actualTitle = await _inventoryPage.InventoryItemTitles.AllInnerTextsAsync();
+            var actualDescription = await _inventoryPage.InventoryItemDescriptions.AllInnerTextsAsync();
+            var actualPrice = await _inventoryPage.InventoryItemPrices.AllInnerTextsAsync();
+
+            for(var i = 0; i < product.Count(); i++)
+            {
+                actualTitle[i].Should().Be(product[i].Title);
+                actualDescription[i].Should().Be(product[i].Description);
+                actualPrice[i].Should().Be(product[i].Price);
+            }
+
+            //await _inventoryPage.TestingThisOut();
+            //_driver.Page.Console += (_, msg) => Console.WriteLine(msg.Text);
+        }
+
+        [Then(@"I select Price \(low to high\) '([^']*)' from sort dropdown")]
+        public async Task ThenISelectFromSortDropdown(string sortOptionName)
+        {
+            await _inventoryPage.ClickProductSortButton(sortOptionName);
         }
     }
 }

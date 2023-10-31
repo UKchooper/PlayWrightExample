@@ -19,7 +19,12 @@ namespace SpecFlowTestProject.Pages
         //public ILocator VarProductItemButton => _page.GetByText(varProductName)
         //    .Locator("xpath=../../..").GetByRole(AriaRole.Button, new() { Name = "Add to cart" });
         private ILocator CheckoutButton => _page.Locator("#shopping_cart_container a");
-        
+        private ILocator GetInventoryItems => _page.Locator("xpath=//div[@class='inventory_item']");
+        public ILocator InventoryItemTitles => GetInventoryItems.Locator("xpath=//div[@class='inventory_item_name ']");
+        public ILocator InventoryItemDescriptions => GetInventoryItems.Locator("xpath=//div[@class='inventory_item_desc']");
+        public ILocator InventoryItemPrices => GetInventoryItems.Locator("xpath=//div[@class='inventory_item_price']");
+        private ILocator InventorySortButton => _page.Locator("[data-test=\"product_sort_container\"]");
+
         /// <summary>
         /// Click burger menu button
         /// </summary>
@@ -64,9 +69,13 @@ namespace SpecFlowTestProject.Pages
         /// Get variable product text name for locator e.g. "Sauce Labs Backpack"
         /// </summary>
         /// <param name="productName"></param>
-        public void GetVarProductNameForLocator(string productName)
-        {
-            varProductName = productName;
-        }
+        public void GetVarProductNameForLocator(string productName) => varProductName = productName;
+
+        /// <summary>
+        /// Sorts products by Option value (string)
+        /// </summary>
+        /// <param name="sortName"></param>
+        /// <returns></returns>
+        public async Task ClickProductSortButton(string sortName) => await InventorySortButton.SelectOptionAsync(new[] { sortName });
     }
 }

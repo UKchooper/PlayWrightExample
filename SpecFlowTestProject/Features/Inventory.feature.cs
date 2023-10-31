@@ -38,7 +38,7 @@ namespace PlayWrightSpecFlow.Features
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Inventory tests", "Inventory tests:\r\nThese include adding products to the cart, removing products fr" +
-                    "om the cart", ProgrammingLanguage.CSharp, new string[] {
+                    "om the cart, re-ordering items", ProgrammingLanguage.CSharp, new string[] {
                         "inventory"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -167,12 +167,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Product title, descript, price are present and correct")]
-        public virtual void ProductTitleDescriptPriceArePresentAndCorrect()
+        [NUnit.Framework.DescriptionAttribute("Product title, description, price are present and correct")]
+        public virtual void ProductTitleDescriptionPriceArePresentAndCorrect()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Product title, descript, price are present and correct", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Product title, description, price are present and correct", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -210,6 +210,124 @@ this.ScenarioInitialize(scenarioInfo);
                             "$15.99"});
 #line 23
  testRunner.Then("I validate product Title <Title>, Description <Description> and Price <Price>", ((string)(null)), table1, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Products can be re-ordered")]
+        public virtual void ProductsCanBeRe_Ordered()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Products can be re-ordered", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 27
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 28
+ testRunner.Given("I navigate to website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 29
+ testRunner.And("I enter the login details \'standard_user\' and \'secret_sauce\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Title",
+                            "Description",
+                            "Price"});
+                table2.AddRow(new string[] {
+                            "Sauce Labs Backpack",
+                            "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromisi" +
+                                "ng style with unequaled laptop and tablet protection.",
+                            "$29.99"});
+                table2.AddRow(new string[] {
+                            "Sauce Labs Bike Light",
+                            "A red light isn\'t the desired state in testing but it sure helps when riding your" +
+                                " bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.",
+                            "$9.99"});
+                table2.AddRow(new string[] {
+                            "Sauce Labs Bolt T-Shirt",
+                            "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American App" +
+                                "arel, 100% ringspun combed cotton, heather gray with red bolt.",
+                            "$15.99"});
+                table2.AddRow(new string[] {
+                            "Sauce Labs Fleece Jacket",
+                            "It\'s not every day that you come across a midweight quarter-zip fleece jacket cap" +
+                                "able of handling everything from a relaxing day outdoors to a busy day at the of" +
+                                "fice.",
+                            "$49.99"});
+                table2.AddRow(new string[] {
+                            "Sauce Labs Onesie",
+                            "Rib snap infant onesie for the junior automation engineer in development. Reinfor" +
+                                "ced 3-snap bottom closure, two-needle hemmed sleeved and bottom won\'t unravel.",
+                            "$7.99"});
+                table2.AddRow(new string[] {
+                            "Test.allTheThings() T-Shirt (Red)",
+                            "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboa" +
+                                "rd to automate a few tests. Super-soft and comfy ringspun combed cotton.",
+                            "$15.99"});
+#line 30
+ testRunner.When("I validate the order of products Title <Title>, Description <Description> and Pri" +
+                        "ce <Price>", ((string)(null)), table2, "When ");
+#line hidden
+#line 38
+ testRunner.Then("I select Price (low to high) \'lohi\' from sort dropdown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Title",
+                            "Description",
+                            "Price"});
+                table3.AddRow(new string[] {
+                            "Sauce Labs Onesie",
+                            "Rib snap infant onesie for the junior automation engineer in development. Reinfor" +
+                                "ced 3-snap bottom closure, two-needle hemmed sleeved and bottom won\'t unravel.",
+                            "$7.99"});
+                table3.AddRow(new string[] {
+                            "Sauce Labs Bike Light",
+                            "A red light isn\'t the desired state in testing but it sure helps when riding your" +
+                                " bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.",
+                            "$9.99"});
+                table3.AddRow(new string[] {
+                            "Sauce Labs Bolt T-Shirt",
+                            "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American App" +
+                                "arel, 100% ringspun combed cotton, heather gray with red bolt.",
+                            "$15.99"});
+                table3.AddRow(new string[] {
+                            "Test.allTheThings() T-Shirt (Red)",
+                            "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboa" +
+                                "rd to automate a few tests. Super-soft and comfy ringspun combed cotton.",
+                            "$15.99"});
+                table3.AddRow(new string[] {
+                            "Sauce Labs Backpack",
+                            "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromisi" +
+                                "ng style with unequaled laptop and tablet protection.",
+                            "$29.99"});
+                table3.AddRow(new string[] {
+                            "Sauce Labs Fleece Jacket",
+                            "It\'s not every day that you come across a midweight quarter-zip fleece jacket cap" +
+                                "able of handling everything from a relaxing day outdoors to a busy day at the of" +
+                                "fice.",
+                            "$49.99"});
+#line 39
+ testRunner.And("I validate the order of products Title <Title>, Description <Description> and Pri" +
+                        "ce <Price>", ((string)(null)), table3, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

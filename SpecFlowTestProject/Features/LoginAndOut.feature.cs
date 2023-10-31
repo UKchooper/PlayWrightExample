@@ -84,6 +84,7 @@ namespace PlayWrightSpecFlow.Features
         [NUnit.Framework.TestCaseAttribute("standard_user", "", "Epic sadface: Password is required", null)]
         [NUnit.Framework.TestCaseAttribute("RandomUser", "RandomPassword", "Epic sadface: Username and password do not match any user in this service", null)]
         [NUnit.Framework.TestCaseAttribute("standard_user", "RandomPassword", "Epic sadface: Username and password do not match any user in this service", null)]
+        [NUnit.Framework.TestCaseAttribute("locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out.", null)]
         public virtual void TestInvalidLoginOperationOfSwagLabsWebsite(string userName, string password, string error, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -132,7 +133,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Valid login operation of Swag labs website and log out", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 18
+#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -152,19 +153,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 19
+#line 20
  testRunner.Given("I navigate to website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 21
  testRunner.When("I enter the login details \'standard_user\' and \'secret_sauce\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 22
  testRunner.Then("I validate the url \'https://www.saucedemo.com/inventory.html\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 22
+#line 23
  testRunner.And("I select user log out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 23
+#line 24
  testRunner.And("I validate the url \'https://www.saucedemo.com/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
