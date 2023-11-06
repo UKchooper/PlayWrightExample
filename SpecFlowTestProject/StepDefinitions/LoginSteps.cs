@@ -1,7 +1,9 @@
+using FluentAssertions;
 using Microsoft.Playwright.NUnit;
 using PlayWrightDemo.Pages;
 using SpecFlowTestProject.Drivers;
 using SpecFlowTestProject.Pages;
+using TechTalk.SpecFlow;
 
 namespace SpecFlowTestProject.StepDefinitions
 {

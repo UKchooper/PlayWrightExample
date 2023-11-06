@@ -1,8 +1,10 @@
-﻿using Microsoft.Playwright.NUnit;
+﻿using FluentAssertions;
+using Microsoft.Playwright.NUnit;
 using PlayWrightSpecFlow.Pages;
 using PlayWrightSpecFlow.TableRows;
 using SpecFlowTestProject.Drivers;
 using SpecFlowTestProject.Pages;
+using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
 namespace SpecFlowTestProject.StepDefinitions

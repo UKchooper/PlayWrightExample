@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using TechTalk.SpecFlow;
 
 [assembly:Parallelizable(ParallelScope.Fixtures)]
 
