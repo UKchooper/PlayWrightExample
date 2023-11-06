@@ -30,6 +30,20 @@ namespace SpecFlowTestProject.StepDefinitions
             expectedButtonText.Should().Be(await _inventoryPage.VarProductItemButton.InnerTextAsync());
         }
 
+        [When(@"I navigate to specific product page '([^']*)'")]
+        public async Task WhenINavigateToSpecificProductPage(string productName)
+        {
+            _inventoryPage.GetVarProductNameForLocator(productName);
+            await _inventoryPage.ClickVariableProductLink(productName);
+        }
+
+        [When(@"I click Add to cart button on product page for item")]
+        public async Task WhenIClickAddToCartButtonOnProductPageForItem()
+        {
+            await _inventoryPage.ClickAddToCartOnProductPage();
+        }
+
+
         [Then(@"I navigate to checkout")]
         public async Task ThenINavigateToCheckout()
         {

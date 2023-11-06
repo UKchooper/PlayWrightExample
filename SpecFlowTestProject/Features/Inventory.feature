@@ -4,12 +4,20 @@ Feature: Inventory tests
 Inventory tests:
 These include adding products to the cart, removing products from the cart, re-ordering items
 
-Scenario: Item can be added to cart
+Scenario: Item can be added to cart from main page
 	Given I navigate to website
 	And I enter the login details 'standard_user' and 'secret_sauce'
 	When I click Add to cart button on main page for 'Sauce Labs Backpack' item
 	Then I navigate to checkout
 	And validate '1' 'Sauce Labs Backpack' item is in cart
+
+Scenario: Item can be added to cart from product page
+	Given I navigate to website
+	And I enter the login details 'standard_user' and 'secret_sauce'
+	When I navigate to specific product page 'Sauce Labs Onesie'
+	And I click Add to cart button on product page for item
+	Then I navigate to checkout
+	And validate '1' 'Sauce Labs Onesie' item is in cart
 
 Scenario: Item can be removed via Inventory page
 	Given I navigate to website

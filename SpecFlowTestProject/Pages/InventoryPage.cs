@@ -14,6 +14,8 @@ namespace SpecFlowTestProject.Pages
         private ILocator LogoutButton => _page.Locator(InventoryAutomationIds.LogoutButtonView);
         public ILocator VarProductItemButton => _page.GetByText(varProductName)
             .Locator("xpath=../../..").Locator("button");
+        public ILocator VarProductItem => _page.GetByText(varProductName);
+        public ILocator AddToCartProductPage => _page.GetByRole(AriaRole.Button, new() { Name = "Add to cart" });
         public ILocator VarProductPriceText => _page.GetByText(varProductName)
             .Locator("xpath=../..").Locator("xpath=//div[@class='inventory_item_price']");
         //public ILocator VarProductItemButton => _page.GetByText(varProductName)
@@ -77,5 +79,16 @@ namespace SpecFlowTestProject.Pages
         /// <param name="sortName"></param>
         /// <returns></returns>
         public async Task ClickProductSortButton(string sortName) => await InventorySortButton.SelectOptionAsync(new[] { sortName });
+
+        public async Task ClickVariableProductLink(string productName)
+        {
+            varProductName = productName;
+            await VarProductItem.ClickAsync();
+        }
+
+        public async Task ClickAddToCartOnProductPage()
+        {
+            await AddToCartProductPage.ClickAsync();
+        }
     }
 }
