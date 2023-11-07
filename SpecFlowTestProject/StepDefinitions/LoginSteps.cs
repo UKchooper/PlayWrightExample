@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using PlayWrightDemo.Pages;
 using SpecFlowTestProject.Drivers;
@@ -13,6 +14,7 @@ namespace SpecFlowTestProject.StepDefinitions
         private readonly Driver _driver;
         private readonly LoginPage _loginPage;
         private readonly InventoryPage _inventoryPage;
+        private ICDPSession clientDevTools;
 
         public LoginSteps(Driver driver)
         {
@@ -53,6 +55,21 @@ namespace SpecFlowTestProject.StepDefinitions
         {
             await _inventoryPage.ClickBurgerMenu();
             await _inventoryPage.ClickLogout();
+        }
+
+        [Given(@"I enable Performance dev tools")]
+        public async Task GivenIEnablePerformanceDevTools()
+        {
+            clientDevTools = await _driver.Page.Context.NewCDPSessionAsync(_driver.Page);
+            await clientDevTools.SendAsync("Performance.enable");
+        }
+
+        [Then(@"I report Performance dev tools to console")]
+        public async Task ThenIReportPerformanceDevToolsToConsole()
+        {
+            Console.WriteLine("\n=== Devtools:");
+            var response = await clientDevTools.SendAsync("Performance.getMetrics");
+            Console.WriteLine(response);
         }
     }
 }

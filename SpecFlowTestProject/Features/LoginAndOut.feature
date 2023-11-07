@@ -23,3 +23,12 @@ Scenario: Test Valid login operation of Swag labs website and log out
 	And I select user log out
 	And I validate the url 'https://www.saucedemo.com/'
 	
+Scenario: Performance Dev Tools - Test Valid login operation of Swag labs website and log out
+	Given I navigate to website
+	And I enable Performance dev tools
+	When I enter the login details 'standard_user' and 'secret_sauce'
+	Then I validate the url 'https://www.saucedemo.com/inventory.html'
+	And I select user log out
+	And I validate the url 'https://www.saucedemo.com/'
+	And I report Performance dev tools to console
+	
